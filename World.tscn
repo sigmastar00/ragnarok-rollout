@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://bg.png" type="Texture" id=2]
 [ext_resource path="res://Collectible.tscn" type="PackedScene" id=3]
+[ext_resource path="res://terrain_tileset.tres" type="TileSet" id=4]
 
 [sub_resource type="OpenSimplexNoise" id=1]
 seed = 2
@@ -16,9 +17,6 @@ width = 1024
 height = 1024
 seamless = true
 noise = SubResource( 1 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 4245.5, 59 )
 
 [sub_resource type="Environment" id=4]
 background_mode = 4
@@ -34,13 +32,27 @@ height = 2048
 seamless = true
 noise = SubResource( 1 )
 
+[sub_resource type="OpenSimplexNoise" id=6]
+seed = 5
+
+[sub_resource type="NoiseTexture" id=7]
+seamless = true
+noise = SubResource( 6 )
+
 [node name="World" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ -2000.0 ],
+"_edit_lock_": true
+}
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -1
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.3, 0.3 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Background" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
 self_modulate = Color( 0.32549, 0.0235294, 0.686275, 1 )
@@ -48,22 +60,24 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1e+07, 1e+07 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="FogFar" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
 modulate = Color( 0.235294, 0.376471, 0.454902, 0.0901961 )
 texture = SubResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1e+07, 1e+07 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 599, 824 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 3393.5, 0 )
-shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 4 )
@@ -73,24 +87,49 @@ layer = 1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxForeground"]
 motion_scale = Vector2( 1.2, 1.2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="FogNear" type="Sprite" parent="ParallaxForeground/ParallaxLayer"]
 modulate = Color( 0.137255, 0.027451, 0.356863, 0.294118 )
 texture = SubResource( 5 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1e+07, 1e+07 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 419, 199 )
+position = Vector2( 598, -693 )
 
 [node name="Collectible" parent="." instance=ExtResource( 3 )]
-position = Vector2( 788, 535 )
+position = Vector2( 832, -929 )
 
 [node name="Collectible2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 988, 365 )
+position = Vector2( 1032, -1099 )
 
 [node name="Collectible3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1185, 172 )
+position = Vector2( 1229, -1292 )
 
 [node name="Collectible4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1360, 1 )
+position = Vector2( 1404, -1463 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 180, 180 )
+format = 1
+tile_data = PoolIntArray( -851944, 0, 0, -851943, 0, 1, -851942, 0, 2, -786408, 0, 65536, -786407, 0, 65537, -786406, 0, 65538, -720872, 0, 65536, -720871, 0, 65537, -720870, 0, 65538, -655336, 0, 65536, -655335, 0, 65537, -655334, 0, 65538, -589800, 0, 65536, -589799, 0, 65537, -589798, 0, 65538, -524264, 0, 65536, -524263, 0, 65537, -524262, 0, 65538, -458728, 0, 65536, -458727, 0, 65537, -458726, 0, 65538, -458718, 0, 0, -458717, 0, 1, -458716, 0, 2, -393192, 0, 131072, -393191, 0, 131073, -393190, 0, 131074, -393182, 0, 65536, -393181, 0, 65537, -393180, 0, 65538, -327646, 0, 65536, -327645, 0, 65537, -327644, 0, 65538, -262110, 0, 65536, -262109, 0, 65537, -262108, 0, 65538, -131073, 0, 0, -196608, 0, 1, -196607, 0, 1, -196606, 0, 1, -196605, 0, 1, -196604, 0, 2, -196574, 0, 65536, -196573, 0, 65537, -196572, 0, 65538, -65537, 0, 65536, -131072, 0, 65537, -131071, 0, 65537, -131070, 0, 65537, -131069, 0, 65537, -131068, 0, 65538, -131038, 0, 65536, -131037, 0, 65537, -131036, 0, 65538, -1, 0, 65536, -65536, 0, 65537, -65535, 0, 65537, -65534, 0, 65537, -65533, 0, 65537, -65532, 0, 65538, -65502, 0, 65536, -65501, 0, 65537, -65500, 0, 65538, 65535, 0, 65536, 0, 0, 65537, 1, 0, 65537, 2, 0, 65537, 3, 0, 65537, 4, 0, 65538, 34, 0, 65536, 35, 0, 65537, 36, 0, 65538, 131071, 0, 131072, 65536, 0, 131073, 65537, 0, 131073, 65538, 0, 131073, 65539, 0, 131073, 65540, 0, 131074, 65570, 0, 65536, 65571, 0, 65537, 65572, 0, 65538, 131106, 0, 131072, 131107, 0, 131073, 131108, 0, 131074 )
+
+[node name="BadFog" type="Sprite" parent="."]
+self_modulate = Color( 1, 0, 0, 0.270588 )
+texture = SubResource( 7 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1e+07, 512 )
+
+[node name="BadFog2" type="Sprite" parent="."]
+self_modulate = Color( 1, 0, 0, 0.270588 )
+position = Vector2( 0, -2000 )
+texture = SubResource( 7 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1e+07, 512 )
