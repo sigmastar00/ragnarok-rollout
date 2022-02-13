@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tileset.png-a39e944f25b35d62f55d4f98a36e2b5e.stex"
+path="res://.import/bg.png-e7e9d5cd626de3233c8b67a15fca5e82.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tileset.png"
-dest_files=[ "res://.import/tileset.png-a39e944f25b35d62f55d4f98a36e2b5e.stex" ]
+source_file="res://world/bg.png"
+dest_files=[ "res://.import/bg.png-e7e9d5cd626de3233c8b67a15fca5e82.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=2
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
