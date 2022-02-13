@@ -18,6 +18,8 @@ export var spin_modifier: float
 export var ouch_length: int
 export var ouch_speed: float
 
+export var bonk_shake: float
+
 # == PUBLIC VARIABLES ==
 
 # == PRIVATE VARIABLES ==
@@ -37,6 +39,7 @@ var _ouch_frames := 0
 onready var _line := $Line2D as Line2D
 onready var _sprite := $Sprite as Sprite
 onready var _sparkles := $Particles2D as Particles2D
+onready var _camera := $Camera2D as Camera2D
 
 # == BUILT-IN VIRTUAL METHODS ==
 
@@ -81,6 +84,7 @@ func _physics_process(delta: float) -> void:
 		_dashing = false
 		_ouch_mode = true
 		_ouch_vector = collision.normal
+		_camera.shake(Vector2.DOWN * bonk_shake)
 		
 	
 
