@@ -21,6 +21,8 @@ export var ouch_speed: float
 # == PUBLIC VARIABLES ==
 
 # == PRIVATE VARIABLES ==
+var _active := false
+
 var _velocity := Vector2.ZERO
 
 var _dash_frames := 0
@@ -56,6 +58,7 @@ func _physics_process(delta: float) -> void:
 		_dash_frames = 0
 	
 	if not _ouch_mode and not _dashing and Input.is_action_just_pressed("dash"):
+		_active = true
 		_dash_vector = _get_move_vector()
 		_dashing = true
 	
@@ -69,6 +72,8 @@ func _physics_process(delta: float) -> void:
 		_velocity.y += gravity * delta
 		_velocity.x = move_toward(_velocity.x, 0, friction * delta)
 		
+	if not _active:
+		_velocity = Vector2.ZERO
 	_velocity = move_and_slide(_velocity)
 	
 	if not _ouch_mode and get_slide_count() > 0:
