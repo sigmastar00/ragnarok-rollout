@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Ouroboros.png" type="Texture" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://star.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 65.3758
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 5
+emission_ring_radius = 68.0
+emission_ring_inner_radius = 47.0
+emission_ring_height = 1.0
+emission_ring_axis = Vector3( 0, 0, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.5
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_vertical_guides_": [ 68.0, 47.0 ]
+}
+dash_speed = 2000.0
+dash_length = 10
+friction = 1000.0
+gravity = 1000.0
+spin_modifier = 0.01
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+flip_h = true
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( 141, 0, 0, -1 )
+width = 2.0
+default_color = Color( 0.482353, 0.482353, 0.482353, 1 )
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 600, 0 )
+current = true
+zoom = Vector2( 1.5, 1.5 )
+smoothing_enabled = true
+smoothing_speed = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1, 4 )
+shape = SubResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+emitting = false
+amount = 16
+local_coords = false
+process_material = SubResource( 2 )
+texture = ExtResource( 3 )

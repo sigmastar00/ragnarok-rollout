@@ -1,0 +1,14 @@
+# Import cache
+.import/
+
+# Binaries
+bin/
+build/
+lib/
+export/
+
+*.translation
+export_presets.cfg
+.mono/
+*.kra~
+*.png~
