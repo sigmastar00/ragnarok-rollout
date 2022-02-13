@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://bg.png" type="Texture" id=2]
-[ext_resource path="res://collect.png" type="Texture" id=3]
+[ext_resource path="res://Collectible.tscn" type="PackedScene" id=3]
 
 [sub_resource type="OpenSimplexNoise" id=1]
 seed = 2
@@ -58,9 +58,6 @@ texture = SubResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1e+07, 1e+07 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 419, 199 )
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 599, 824 )
 
@@ -70,16 +67,6 @@ shape = SubResource( 3 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 4 )
-
-[node name="Collect" type="Sprite" parent="."]
-position = Vector2( 876, 380 )
-scale = Vector2( 0.523952, 0.523952 )
-texture = ExtResource( 3 )
-
-[node name="Collect2" type="Sprite" parent="."]
-position = Vector2( 1180, 335 )
-scale = Vector2( 0.523952, 0.523952 )
-texture = ExtResource( 3 )
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 layer = 1
@@ -92,3 +79,18 @@ modulate = Color( 0.137255, 0.027451, 0.356863, 0.294118 )
 texture = SubResource( 5 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1e+07, 1e+07 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 419, 199 )
+
+[node name="Collectible" parent="." instance=ExtResource( 3 )]
+position = Vector2( 788, 535 )
+
+[node name="Collectible2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 988, 365 )
+
+[node name="Collectible3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1185, 172 )
+
+[node name="Collectible4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1360, 1 )
