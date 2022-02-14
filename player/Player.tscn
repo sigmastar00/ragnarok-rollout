@@ -50,6 +50,7 @@ end_cap_mode = 2
 offset = Vector2( 600, 0 )
 current = true
 zoom = Vector2( 2, 2 )
+process_mode = 0
 limit_top = -2000
 limit_bottom = 0
 smoothing_enabled = true

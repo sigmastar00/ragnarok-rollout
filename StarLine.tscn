@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://StarLine.gd" type="Script" id=1]
+
+[node name="Node2D" type="Line2D"]
+points = PoolVector2Array( 58, 89, 451, 325 )
+script = ExtResource( 1 )
