@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Line2D",
 "class": "StarLine",
 "language": "GDScript",
-"path": "res://StarLine.gd"
+"path": "res://objects/StarLine.gd"
 } ]
 _global_script_class_icons={
 "GitAPI": "",
