@@ -4,6 +4,8 @@ extends KinematicBody2D
 
 # == SIGNALS ==
 signal player_died(player)
+signal dashed(vector)
+signal hit_boss()
 
 # == ENUMS ==
 
@@ -41,6 +43,7 @@ var _dash_vector: Vector2
 var _ouch_mode := false
 var _ouch_vector: Vector2
 var _ouch_frames := 0
+var _red := false
 
 # == ONREADY VARIABLES ==
 onready var _line := $Line2D as Line2D
@@ -72,6 +75,7 @@ func _physics_process(delta: float) -> void:
 	if _ouch_frames >= ouch_length:
 		_ouch_mode = false
 		_ouch_frames = 0
+		_red = false
 
 	if _dash_frames >= dash_length:
 		_dashing = false
@@ -81,6 +85,7 @@ func _physics_process(delta: float) -> void:
 		_active = true
 		_dash_vector = _get_move_vector()
 		_dashing = true
+		emit_signal("dashed", _dash_vector)
 
 	if _dashing:
 		_velocity = dash_speed * _dash_vector
@@ -98,11 +103,16 @@ func _physics_process(delta: float) -> void:
 
 	if not _ouch_mode and not _dead and get_slide_count() > 0:
 		var collision := get_slide_collision(0)
+		var other := collision.collider.collision_layer as int
+		if other & (1 << 1):
+			health -= 1
+			_red = true
+		else:
+			emit_signal("hit_boss")
 		_dashing = false
 		_ouch_mode = true
 		_ouch_vector = collision.normal
 		_camera.shake(Vector2.DOWN * bonk_shake)
-		health -= 1
 
 	if position.y > lower_bound and not _fallen:
 		_fallen = true
@@ -118,7 +128,7 @@ func _process(delta: float) -> void:
 	_sparkles.emitting = _dashing
 	if _dashing:
 		_sprite.modulate = Color(1.5, 1.5, 1.6)
-	elif _ouch_mode:
+	elif _red:
 		_sprite.modulate = Color(1, 0.1, 0.1)
 	else:
 		_sprite.modulate = Color.white

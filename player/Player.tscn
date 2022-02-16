@@ -21,7 +21,7 @@ orbit_velocity_random = 0.0
 scale = 0.5
 
 [node name="Player" type="KinematicBody2D"]
-collision_mask = 0
+collision_mask = 6
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_vertical_guides_": [ 89.0, -89.0 ]
