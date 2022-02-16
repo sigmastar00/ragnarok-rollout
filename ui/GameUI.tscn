@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://fonts/norse/Norse-Bold.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://objects/collect.png" type="Texture" id=2]
 [ext_resource path="res://ui/GameUI.gd" type="Script" id=3]
+[ext_resource path="res://addons/jamcountdown/Roboto-Bold.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -18,7 +19,7 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 30
-font_data = ExtResource( 1 )
+font_data = ExtResource( 4 )
 
 [node name="GameUI" type="Control"]
 anchor_right = 1.0
@@ -139,7 +140,7 @@ __meta__ = {
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 321.0
-margin_bottom = 93.0
+margin_bottom = 98.0
 
 [node name="Label" type="Label" parent="DeathText/VBoxContainer"]
 margin_right = 314.0
@@ -151,7 +152,7 @@ align = 1
 [node name="Label2" type="Label" parent="DeathText/VBoxContainer"]
 margin_top = 55.0
 margin_right = 314.0
-margin_bottom = 86.0
+margin_bottom = 91.0
 custom_fonts/font = SubResource( 4 )
 text = "Click to respawn"
 align = 1

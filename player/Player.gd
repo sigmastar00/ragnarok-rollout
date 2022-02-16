@@ -143,6 +143,7 @@ func _reset() -> void:
 
 	_active = false
 	_fallen = false
+	_sprite.rotation = 0
 
 	_velocity = Vector2.ZERO
 

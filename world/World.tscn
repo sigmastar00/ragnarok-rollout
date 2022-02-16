@@ -112,5 +112,6 @@ scroll_speed = 50.0
 
 [node name="GameUI" parent="CanvasLayer" instance=ExtResource( 8 )]
 
+[connection signal="activated" from="Checkpoint" to="." method="_on_Checkpoint_activated"]
 [connection signal="player_died" from="Player" to="." method="_on_Player_player_died"]
 [connection signal="revive_clicked" from="CanvasLayer/GameUI" to="." method="_on_GameUI_revive_clicked"]

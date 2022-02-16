@@ -9,7 +9,7 @@
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 3 )
 shader_param/glow = 0.0
-shader_param/glow_color = Color( 0, 1.48, 0.855625, 1 )
+shader_param/glow_color = Color( 0, 1, 0.0627451, 1 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 250, 1500 )

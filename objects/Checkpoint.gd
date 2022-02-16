@@ -2,6 +2,7 @@ extends Area2D
 ## Class documentation.
 
 # == SIGNALS ==
+signal activated(checkpoint)
 
 # == ENUMS ==
 
@@ -12,6 +13,7 @@ extends Area2D
 # == PUBLIC VARIABLES ==
 
 # == PRIVATE VARIABLES ==
+var _active := false
 
 # == ONREADY VARIABLES ==
 onready var _animator := $AnimationPlayer as AnimationPlayer
@@ -31,4 +33,9 @@ func _ready() -> void:
 
 # == SIGNAL HANDLERS ==
 func _on_Checkpoint_body_entered(body: Node) -> void:
+	if _active:
+		return
+
 	_animator.play("Activate")
+	_active = true
+	emit_signal("activated", self)

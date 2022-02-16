@@ -45,3 +45,7 @@ func _on_Player_player_died(player: KinematicBody2D) -> void:
 
 func _on_GameUI_revive_clicked() -> void:
 	_player.respawn(_respawn_point)
+
+
+func _on_Checkpoint_activated(checkpoint: Area2D) -> void:
+	_respawn_point = checkpoint.position
