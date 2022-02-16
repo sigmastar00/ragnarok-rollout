@@ -21,6 +21,7 @@ orbit_velocity_random = 0.0
 scale = 0.5
 
 [node name="Player" type="KinematicBody2D"]
+collision_mask = 0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_vertical_guides_": [ 89.0, -89.0 ]
@@ -33,6 +34,8 @@ spin_modifier = 0.01
 ouch_length = 5
 ouch_speed = 700.0
 bonk_shake = 100.0
+dead_shake = 100.0
+lower_bound = 300.0
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
@@ -58,6 +61,7 @@ smoothing_speed = 10.0
 script = ExtResource( 4 )
 
 [node name="Tween" type="Tween" parent="Camera2D"]
+playback_process_mode = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1, 4 )
