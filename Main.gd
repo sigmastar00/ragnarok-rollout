@@ -24,12 +24,9 @@ func _init() -> void:
 
 
 func _ready() -> void:
-	_ui.stars = 100
-	_ui.health = 2
-	
 	_respawn_point = _player.position
-	
-	
+
+
 func _process(_delta: float) -> void:
 	_ui.health = _player.health
 
