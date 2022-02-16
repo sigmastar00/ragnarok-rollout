@@ -130,6 +130,10 @@ func respawn(respawn_position: Vector2) -> void:
 	_reset()
 	yield(get_tree().create_timer(0.5, false), "timeout")
 	_dead = false
+	
+	
+func restore_health() -> void:
+	health = 3
 
 # == PRIVAE METHODS ==
 func _get_move_vector() -> Vector2:

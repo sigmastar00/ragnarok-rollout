@@ -49,3 +49,4 @@ func _on_GameUI_revive_clicked() -> void:
 
 func _on_Checkpoint_activated(checkpoint: Area2D) -> void:
 	_respawn_point = checkpoint.position
+	_player.restore_health()
