@@ -34,9 +34,9 @@ bobble_frequency = 0.003
 
 [node name="Particles2D" type="Particles2D" parent="."]
 emitting = false
-amount = 16
 one_shot = true
 explosiveness = 1.0
+visibility_rect = Rect2( -49.7573, -51.5386, 100.768, 98.8756 )
 process_material = SubResource( 4 )
 texture = ExtResource( 3 )
 
