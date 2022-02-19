@@ -38,6 +38,7 @@ func _process(_delta: float) -> void:
 # == SIGNAL HANDLERS ==
 func _on_Player_player_died(player: KinematicBody2D) -> void:
 	_ui.show_death_text()
+	GameState.stars /= 2
 
 
 func _on_GameUI_revive_clicked() -> void:

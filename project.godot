@@ -30,6 +30,10 @@ config/name="ragnarok"
 run/main_scene="res://world/World.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GameState="*res://GameState.gd"
+
 [display]
 
 window/size/width=1280

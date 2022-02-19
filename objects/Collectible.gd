@@ -44,6 +44,7 @@ func _disapear() -> void:
 	monitoring = false
 	_sprite.visible = false
 	_particles.emitting = true
+	GameState.stars += 1
 	yield(get_tree().create_timer(1), "timeout")
 	queue_free()
 

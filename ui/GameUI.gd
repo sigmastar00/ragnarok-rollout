@@ -33,6 +33,10 @@ func _ready() -> void:
 	pass
 
 
+func _process(_delta: float) -> void:
+	set_stars(GameState.stars)
+
+
 func _input(event: InputEvent) -> void:
 	if _death_text.visible and event.is_action_pressed("dash"):
 		_death_text.visible = false
@@ -51,7 +55,7 @@ func set_health(amount: int) -> void:
 			heart_image.color = full_heart_color
 		else:
 			heart_image.color = empty_heart_color
-	
+
 
 func set_stars(amount: int) -> void:
 	stars = amount
