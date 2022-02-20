@@ -26,7 +26,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Ragnarok Rollout"
+config/name="Ragnarök Rollout"
 run/main_scene="res://world/World.tscn"
 config/icon="res://icon.png"
 
