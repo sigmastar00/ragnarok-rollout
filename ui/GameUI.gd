@@ -14,6 +14,7 @@ export var empty_heart_color: Color
 
 var health: int setget set_health
 var stars: int setget set_stars
+var progress: float setget set_progress
 
 # == PUBLIC VARIABLES ==
 
@@ -24,7 +25,8 @@ onready var _cooldown := false
 onready var _health_container := $StatusPanel/VBoxContainer/HealthContainer as HBoxContainer
 onready var _stars_label := $StarsPanel/HBoxContainer/StarLabel as Label
 onready var _death_text := $DeathText
-onready var _timer_label := $PanelContainer/TimerLabel as Label
+onready var _timer_label := $TimerPanel/TimerLabel as Label
+onready var _progress_bar := $ProgressPanel/HBoxContainer/ProgressBar as ProgressBar
 
 # == BUILT-IN VIRTUAL METHODS ==
 func _init() -> void:
@@ -44,6 +46,12 @@ func _input(event: InputEvent) -> void:
 	if not _cooldown and _death_text.visible and event.is_action_pressed("dash"):
 		_death_text.visible = false
 		emit_signal("revive_clicked")
+		
+	if event.is_action_pressed("pause"):
+		$PauseScreen.popup()
+		get_tree().paused = true
+		get_tree().set_input_as_handled()
+
 
 
 # == PUBLIC METHODS ==
@@ -67,6 +75,11 @@ func set_health(amount: int) -> void:
 func set_stars(amount: int) -> void:
 	stars = amount
 	_stars_label.text = "x %d" % stars
+	
+	
+func set_progress(amount: float) -> void:
+	progress = amount
+	_progress_bar.value = amount
 
 
 # == PRIVATE METHODS ==

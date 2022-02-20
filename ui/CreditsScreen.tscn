@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/CreditsText.gd" type="Script" id=1]
+
+[sub_resource type="InputEventAction" id=1]
+action = "pause"
+pressed = true
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
+
+[node name="CreditsScreen" type="PopupPanel"]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+popup_exclusive = true
+script = ExtResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1262.0
+margin_bottom = 702.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+margin_right = 1252.0
+margin_bottom = 668.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "[b]Sample Data[/b]
+This will be overwritten at runtime."
+text = "Sample Data
+This will be overwritten at runtime."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OkButton" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_left = 611.0
+margin_top = 672.0
+margin_right = 641.0
+margin_bottom = 692.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+shortcut_in_tooltip = false
+shortcut = SubResource( 2 )
+text = "Ok"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_RichTextLabel_meta_clicked"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/OkButton" to="." method="_on_OkButton_pressed"]

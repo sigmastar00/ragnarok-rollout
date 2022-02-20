@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://fonts/norse/Norse-Bold.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://objects/collect.png" type="Texture" id=2]
 [ext_resource path="res://ui/GameUI.gd" type="Script" id=3]
 [ext_resource path="res://addons/jamcountdown/Roboto-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://ui/PauseScreen.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -161,7 +162,7 @@ custom_fonts/font = SubResource( 4 )
 text = "Click to respawn"
 align = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="TimerPanel" type="PanelContainer" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -7.0
@@ -172,7 +173,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TimerLabel" type="Label" parent="PanelContainer"]
+[node name="TimerLabel" type="Label" parent="TimerPanel"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 95.0
@@ -180,3 +181,34 @@ margin_bottom = 53.0
 custom_fonts/font = SubResource( 5 )
 text = "0:000"
 align = 1
+
+[node name="ProgressPanel" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -257.0
+margin_top = -28.0
+margin_right = 257.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ProgressPanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 608.0
+margin_bottom = 21.0
+
+[node name="Label" type="Label" parent="ProgressPanel/HBoxContainer"]
+margin_right = 97.0
+margin_bottom = 14.0
+text = "Stage Progress:"
+
+[node name="ProgressBar" type="ProgressBar" parent="ProgressPanel/HBoxContainer"]
+margin_left = 101.0
+margin_right = 601.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 500, 10 )
+
+[node name="PauseScreen" parent="." instance=ExtResource( 5 )]
