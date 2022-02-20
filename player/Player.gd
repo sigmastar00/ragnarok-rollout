@@ -82,6 +82,7 @@ func _physics_process(delta: float) -> void:
 		_dash_frames = 0
 
 	if not _ouch_mode and not _dashing and not _dead and Input.is_action_just_pressed("dash"):
+		GameState.start_level_timer()
 		_active = true
 		_dash_vector = _get_move_vector()
 		_dashing = true

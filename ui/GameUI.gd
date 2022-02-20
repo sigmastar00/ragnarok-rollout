@@ -18,11 +18,13 @@ var stars: int setget set_stars
 # == PUBLIC VARIABLES ==
 
 # == PRIVATE VARIABLES ==
+onready var _cooldown := false
 
 # == ONREADY VARIABLES ==
 onready var _health_container := $StatusPanel/VBoxContainer/HealthContainer as HBoxContainer
 onready var _stars_label := $StarsPanel/HBoxContainer/StarLabel as Label
 onready var _death_text := $DeathText
+onready var _timer_label := $PanelContainer/TimerLabel as Label
 
 # == BUILT-IN VIRTUAL METHODS ==
 func _init() -> void:
@@ -35,10 +37,11 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	set_stars(GameState.stars)
+	_timer_label.text = GameState.level_timer_text()
 
 
 func _input(event: InputEvent) -> void:
-	if _death_text.visible and event.is_action_pressed("dash"):
+	if not _cooldown and _death_text.visible and event.is_action_pressed("dash"):
 		_death_text.visible = false
 		emit_signal("revive_clicked")
 
@@ -46,6 +49,10 @@ func _input(event: InputEvent) -> void:
 # == PUBLIC METHODS ==
 func show_death_text() -> void:
 	_death_text.visible = true
+	_cooldown = true
+	yield(get_tree().create_timer(0.5, false), "timeout")
+	_cooldown = false
+
 
 func set_health(amount: int) -> void:
 	health = amount
@@ -60,6 +67,7 @@ func set_health(amount: int) -> void:
 func set_stars(amount: int) -> void:
 	stars = amount
 	_stars_label.text = "x %d" % stars
+
 
 # == PRIVATE METHODS ==
 

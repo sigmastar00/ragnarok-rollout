@@ -24,7 +24,9 @@ func _init() -> void:
 
 
 func _ready() -> void:
+	GameState.reset()
 	_respawn_point = _player.position
+	_count_max_stars()
 
 
 func _process(_delta: float) -> void:
@@ -34,6 +36,11 @@ func _process(_delta: float) -> void:
 # == PUBLIC METHODS ==
 
 # == PRIVATE METHODS ==
+func _count_max_stars() -> void:
+	var count := 0
+	for child in $Stars.get_children():
+		count += child.num_stars
+	GameState.max_stars = count
 
 # == SIGNAL HANDLERS ==
 func _on_Player_player_died(player: KinematicBody2D) -> void:
@@ -48,3 +55,9 @@ func _on_GameUI_revive_clicked() -> void:
 func _on_Checkpoint_activated(checkpoint: Area2D) -> void:
 	_respawn_point = checkpoint.position
 	_player.restore_health()
+
+
+func _on_FinishLine_activated(checkpoint) -> void:
+	GameState.stop_level_timer()
+	get_tree().change_scene("res://ui/EndScreen.tscn")
+	

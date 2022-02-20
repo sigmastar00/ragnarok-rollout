@@ -24,7 +24,7 @@ func _init() -> void:
 
 
 func _ready() -> void:
-	pass
+	_animator.play("RESET")
 
 
 # == PUBLIC METHODS ==
