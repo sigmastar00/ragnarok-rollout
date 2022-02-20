@@ -45,7 +45,7 @@ func _count_max_stars() -> void:
 # == SIGNAL HANDLERS ==
 func _on_Player_player_died(player: KinematicBody2D) -> void:
 	_ui.show_death_text()
-	GameState.stars /= 2
+	GameState.stars = int(GameState.stars * 0.75)
 
 
 func _on_GameUI_revive_clicked() -> void:

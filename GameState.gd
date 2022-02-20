@@ -12,6 +12,7 @@ extends Node
 # == PUBLIC VARIABLES ==
 var stars: int = 0
 var level_timer: int = 0
+var max_stars := 0
 
 # == PRIVATE VARIABLES ==
 var _timer_active := false
@@ -45,9 +46,10 @@ func stop_level_timer() -> void:
 	
 
 func level_timer_text() -> String:
-	var seconds = level_timer / 1000
-	var milliseconds = level_timer - (seconds * 1000)
-	return "%d:%03d" % [seconds, milliseconds]
+	var minutes = level_timer / (60 * 1000)
+	var seconds = (level_timer / 1000) - (minutes * 60)
+	var milliseconds = level_timer - (seconds * 1000) - (minutes * 60 * 1000)
+	return "%d:%02d:%03d" % [minutes, seconds, milliseconds]
 	
 	
 func reset() -> void:
